@@ -1,5 +1,6 @@
 import { Button, Card } from "react-bootstrap";
 import formatCurrency from "../utilities/formatCurrency";
+import { useShopping } from "../context/ShoppingCartContext";
 
 type StoreItemProps = {
   id: number;
@@ -9,7 +10,14 @@ type StoreItemProps = {
 };
 
 const StoreItem = ({ id, name, price, imgUrl }: StoreItemProps) => {
-  const quantity = 0;
+  const {
+    getItemQuantity,
+    increaseCartQuantity,
+    decreaseCartQuantity,
+    removeFromCart,
+  } = useShopping();
+  const quantity = getItemQuantity(id);
+
   return (
     <Card className="h-100">
       <Card.Img
