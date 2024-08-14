@@ -16,6 +16,7 @@ const StoreItem = ({ id, name, price, imgUrl }: StoreItemProps) => {
     decreaseCartQuantity,
     removeFromCart,
   } = useShopping();
+
   const quantity = getItemQuantity(id);
 
   return (
